@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
+from .managers import UserManger
 
 class User(AbstractBaseUser):
     email = models.EmailField(max_length=255, unique=True)
@@ -9,6 +10,8 @@ class User(AbstractBaseUser):
     
     USERNAME_FIELD = "phone_number"
     REQUIRED_FIELDS = ["email", "full_name"]
+    
+    objects = UserManger()
     
     
     def __str__(self):
