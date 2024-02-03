@@ -7,7 +7,6 @@ from .models import OptCode
 from django.contrib import messages
 
 
-
 class UserRegistrationView(View):
     
     form_class = UserRegistrationForm
