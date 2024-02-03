@@ -28,9 +28,16 @@ class UserCreationForm(forms.ModelForm):
 
 
 class UserChangeForm(forms.ModelForm):
-    password = ReadOnlyPasswordHashField(help="you cant changed using <a href=\"../password/\"> this form </a> ")
+    password = ReadOnlyPasswordHashField(help_text="you cant changed using <a href=\"../password/ \"> this form </a> ")
     class Meta:
         model = User
         fields = ("email", "phone_number", "full_name","password", "last_login")
+        
+        
+class UserRegistrationForm(forms.Form):
+    email = forms.EmailField()
+    phone_number = forms.CharField(max_length=11)
+    full_name = forms.CharField(max_length=50)
+    password = forms.CharField(label = "password", widget=forms.PasswordInput)
 
 
