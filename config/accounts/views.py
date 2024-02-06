@@ -10,9 +10,10 @@ from django.contrib import messages
 class UserRegistrationView(View):
     
     form_class = UserRegistrationForm
+    template_name = "accounts/register.html"
     def get(self, request):
         form = self.form_class
-        return  render(request, "accounts/register.html", {"form":form})
+        return  render(request, self.template_name, {"form":form})
     
     def post(self, request):
         form = self.form_class(request.POST)
@@ -28,9 +29,9 @@ class UserRegistrationView(View):
                 
             }
             messages.success(request,"we send a code on your phone!",extra_tags="success")
-            return redirect("accounts:user_verify_code")
+            return redirect("home:home")
             
-        return redirect("accounts:user_register")
+        return render(request, self.template_name, {"form":form})
     
     
 

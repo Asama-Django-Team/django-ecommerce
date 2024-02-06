@@ -35,10 +35,28 @@ class UserChangeForm(forms.ModelForm):
         
         
 class UserRegistrationForm(forms.Form):
+    
     email = forms.EmailField()
     phone_number = forms.CharField(max_length=11)
     full_name = forms.CharField(max_length=50)
     password = forms.CharField(label = "password", widget=forms.PasswordInput)
+    
+    
+    def clean_email(self):
+        cd = self.cleaned_data
+        user = User.objects.filter(email=cd["email"]).exists()
+        if user:
+            raise ValidationError("Email Already Exists!")
+        return user
+    
+    def clean_phone_number(self):
+        cd = self.cleaned_data
+        user = User.objects.filter(phone_number=cd["phone_number"]).exists()
+        if user:
+            raise ValidationError("Phone Number Already Exists!")
+        return user
+    
+    
 
 
 class UserVerifyCodeForm(forms.Form):
