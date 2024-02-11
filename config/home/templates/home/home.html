@@ -1,10 +1,28 @@
 {% extends "base.html" %}
+{% load static %}
 
-{% block title %}
-Home
-{% endblock%}
 
+{% block title %} Home {% endblock%}
+{% block extra_headers %} <link rel="stylesheet" href="{% static 'home/css/home_style.css' %}"> {% endblock %}
 
 {% block content %}
-<h1> Home Page</h1>
+
+    {% for product in products%}
+
+
+            <div class="card col-md-3 " style="width: 18rem;">
+                <img src="{{ product.image.url }}" class="card-img-top" alt="..." >
+                <div class="card-body">
+                  <h5 class="card-title"> {{product.name}} </h5>
+                  <p class="card-text"> {{ product.description }} </p>
+                  <a href=" {% url 'home:product_detail' product.slug %}" class="btn btn-primary"> Read More...</a>
+                </div>
+            </div>
+
+
+
+
+
+    {% endfor %}
+
 {% endblock%}
