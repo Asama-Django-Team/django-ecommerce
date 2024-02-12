@@ -56,4 +56,7 @@ class UserRegistrationForm(forms.Form):
             raise forms.ValidationError("Phone Number Already Exists!")
         return phone_number
     
-
+class UserLoginForm(forms.Form):
+    
+    phone_number = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)

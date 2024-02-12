@@ -140,3 +140,15 @@ EMAIL_HOST_PASSWORD = "jndlombesydwwutq"
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "Asama Group"
 
+
+
+# Aravan Cloud
+
+# DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
+# AWS_ACCESS_KEY_ID = ""
+# AWS_SECRET_ACCESS_KEY = ""
+# AWS_S3_ENDPOINT_URL = ""
+# AWS_STORAGE_BUCKET_NAME = 'mongard-shop'
+# AWS_SERVICE_NAME = "s3"
+# AWS_S3_FILE_OVERWRITE = False
+
