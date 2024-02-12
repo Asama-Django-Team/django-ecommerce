@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark" >
+<nav class="navbar navbar-expand-lg bg-body-tertiary mb-5" data-bs-theme="dark" >
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Asama</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,6 +20,11 @@
           </li>
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'accounts:user_login' %}">Login</a>
+          </li>
+          {% endif %}
+          {% if request.user.phone_number == "09136575980" %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/admin">Admin Pannel</a>
           </li>
           {% endif %}
 
