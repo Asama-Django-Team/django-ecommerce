@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
     'home.apps.HomeConfig',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -147,7 +148,8 @@ DEFAULT_FROM_EMAIL = "Asama Group"
 # DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
 # AWS_ACCESS_KEY_ID = ""
 # AWS_SECRET_ACCESS_KEY = ""
-# AWS_S3_ENDPOINT_URL = ""
+# AWS_S3_ENDPOINT_URL = "https://s3.ir-thr-at1.arvanstorage.ir"
+
 # AWS_STORAGE_BUCKET_NAME = 'mongard-shop'
 # AWS_SERVICE_NAME = "s3"
 # AWS_S3_FILE_OVERWRITE = False
