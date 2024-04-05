@@ -28,6 +28,15 @@
           </li>
           {% endif %}
 
+          {% if request.user.is_admin %}
+
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home:bucket' %}">Bucket</a>
+          </li>
+
+
+          {% endif %}
+
         </ul>
       </div>
     </div>
