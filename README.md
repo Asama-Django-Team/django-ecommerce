@@ -1,1 +1,1 @@
-# django-ecommerce-sn
+# django-ecommerce
