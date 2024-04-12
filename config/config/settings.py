@@ -142,16 +142,14 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = "Asama Group"
 
 
-
 # Aravan Cloud
 
-DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
-AWS_ACCESS_KEY_ID = "f4bb0945-76c6-408d-b1c5-766a9529c8f3"
-AWS_SECRET_ACCESS_KEY = "c0143e32a8ae948869149ba7ae339defaf116d38f34f3b4aab419f5b3a471418"
-AWS_S3_ENDPOINT_URL = "https://s3.ir-thr-at1.arvanstorage.ir"
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = 'f4bb0945-76c6-408d-b1c5-766a9529c8f3'
+AWS_SECRET_ACCESS_KEY = '9300923c0c95e0e92ab0193643c4545281b5732b6900d267edc5ae8d7ee16733'
+AWS_S3_ENDPOINT_URL = 'https://s3.ir-thr-at1.arvanstorage.ir'
 
 AWS_STORAGE_BUCKET_NAME = 'mongard-shop'
 AWS_SERVICE_NAME = "s3"
 AWS_S3_FILE_OVERWRITE = False
 AWS_LOCAL_STORAGE = f'{BASE_DIR}/aws/'
-
