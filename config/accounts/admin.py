@@ -13,8 +13,8 @@ class UserAdimin(BaseUserAdmin):
     readonly_fields = ("last_login",)
     
     fieldsets = (
-        (None, {"fields": ("phone_number", "email", "full_name", "password")}),
-        ("permissions", {"fields": ("is_admin", "is_active", "last_login")}),
+        ("Main", {"fields": ("phone_number", "email", "full_name", "password")}),
+        ("permissions", {"fields": ("is_admin", "is_active", "last_login", "groups", "user_permissions")}),
     )
     add_fieldsets = (
         (None, {"fields": ("phone_number", "email", "full_name", "password1", "password2")}),
@@ -22,7 +22,7 @@ class UserAdimin(BaseUserAdmin):
     
     search_fields = ("email", "full_name")
     ordering = ("full_name",)
-    filter_horizontal = ()
+    filter_horizontal = ("groups", "user_permissions")
 
 
 class OptCodeAdmin(admin.ModelAdmin):

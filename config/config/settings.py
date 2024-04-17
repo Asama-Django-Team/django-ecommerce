@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     
     # 3rd apps
     'storages',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -160,3 +161,10 @@ AWS_STORAGE_BUCKET_NAME = 'mongard-shop'
 AWS_SERVICE_NAME = "s3"
 AWS_S3_FILE_OVERWRITE = False
 AWS_LOCAL_STORAGE = f'{BASE_DIR}/aws/'
+
+
+CKEDITOR_CONFIGS = {
+    "default": {
+        "toolbar": "full",
+    }
+}

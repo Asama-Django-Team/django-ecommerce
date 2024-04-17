@@ -4,9 +4,10 @@ from .cart import Cart
 from home.models import Product
 from .forms import CartAddForm, CouponApplyForm
 from .models import Order, OrderItem, Coupon
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 import datetime
 from django.contrib import messages
+from django.core.exceptions import PermissionDenied
 
 
 class CartView(View):
@@ -15,7 +16,9 @@ class CartView(View):
         return render(request, 'orders/cart.html', {"cart":cart})
 
 
-class CartAddView(View):
+class CartAddView(PermissionRequiredMixin, View):
+    permission_required = "orders.add_order"
+    
     def post(self, request, product_id):
         cart = Cart(request)
         product = get_object_or_404(Product, id=product_id)
@@ -50,8 +53,10 @@ class OrderCreateView(View):
         return redirect("orders:order_detail", order.id)
 
 class CouponApplyView(View):
+    form_class = CouponApplyForm
+
     def post(self, request, order_id):
-        form = CouponApplyForm(request.POST)
+        form = self.form_class(request.POST)
         
         if form.is_valid():
             code = form.cleaned_data["code"]
@@ -59,7 +64,7 @@ class CouponApplyView(View):
                 now = datetime.datetime.now()
                 coupon = Coupon.objects.get(code__exact=code, valid_form__lte=now, valid_to__gte=now, active=True)
             except Coupon.DoesNotExist:
-                messages.error(request, "Coupon does not exists!", extra_tags="danger")
+                messages.error(request, "this oupon does not exists!", extra_tags="danger")
                 return redirect("orders:order_detail", order_id)
             order = Order.objects.get(id=order_id)
             order.discount = coupon.discount
